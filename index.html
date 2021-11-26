@@ -1,0 +1,60 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #span-sequence span {
+        padding-right: 2px;
+
+      }
+      #span-sequence span:not(:last-child)::after {
+        content:",";
+
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <h1></h1>
+
+    <section>
+      <input type="text" id="textarea" />
+    <button onclick="fibSeries()">Create Sequence</button>
+    </section>
+    <section id="sequence"></section>
+    <section id="span-sequence">
+    </section>
+    <script>
+      function fibSeries() {
+        var num = document.getElementById("textarea").value;
+        var arr = [];
+        var num1 = 0;
+        var num2 = 1;
+        console.log(num1);
+        arr.push(num1);
+        console.log(num2);
+        arr.push(num2);
+        var sum = num1 + num2;
+        while (sum < num) {
+          console.log(sum);
+          arr.push(sum);
+          num1 = num2;
+          num2 = sum;
+          sum = num1 + num2;
+        }
+        console.log(arr);
+        
+        // document.getElementById("sequence").innerHTML = arr.join(',  ');
+        var spanEl = "";
+        for(var i = 0; i<arr.length; i++) {
+          spanEl += "<span>" + arr[i] + "</span>"
+        }
+        document.getElementById("span-sequence").innerHTML = spanEl;
+
+      }
+    </script>
+  </body>
+</html>
